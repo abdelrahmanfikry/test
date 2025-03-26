@@ -1,0 +1,318 @@
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #2E7D32;
+    --background-color: #1e1e1e;
+    --text-color: #ffffff;
+    --card-bg: #2d2d2d;
+}
+
+.theme-purple {
+    --primary-color: #9C27B0;
+    --secondary-color: #7B1FA2;
+    --background-color: #121212;
+}
+.theme-pop {
+    --primary-color: #ff1a1a;
+    --secondary-color: #bccf0b;
+    --background-color: #121212;
+}
+
+.theme-blue {
+    --primary-color: #2196F3;
+    --secondary-color: #1976D2;
+    --background-color: #0d1b2a;
+}
+
+.theme-orange {
+    --primary-color: #FF5722;
+    --secondary-color: #E64A19;
+    --background-color: #311b92;
+}
+
+body {
+    font-family: 'Tahoma', Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    transition: all 0.3s ease;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.screen {
+    display: none;
+    animation: fadeIn 0.5s;
+}
+
+.screen.active {
+    display: block;
+}
+
+h1, h2, h3 {
+    color: var(--primary-color);
+    text-align: center;
+}
+
+button {
+    padding: 12px 24px;
+    margin: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: white;
+    transition: all 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: calc(100% - 20px);
+    max-width: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+button:disabled {
+    background-color: #666;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 15px 0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.question-container {
+    margin: 20px 0;
+}
+
+.answers-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+@media (min-width: 600px) {
+    .answers-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.answer-btn {
+    padding: 15px;
+    text-align: center;
+    background-color: #333;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 16px;
+}
+
+.answer-btn:hover {
+    background-color: #444;
+}
+
+.correct {
+    background-color: #4CAF50 !important;
+    animation: pulse 0.5s;
+}
+
+.wrong {
+    background-color: #f44336 !important;
+}
+
+.result-message {
+    font-size: 20px;
+    margin: 15px 0;
+    min-height: 30px;
+    text-align: center;
+}
+
+.progress-container {
+    width: 100%;
+    background-color: #333;
+    border-radius: 10px;
+    margin: 15px 0;
+    height: 15px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--primary-color);
+    width: 0%;
+    transition: width 0.3s;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.stat-box {
+    background-color: var(--card-bg);
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.theme-selector {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.theme-option {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: all 0.3s;
+}
+
+.theme-option[data-theme="default"] {
+    background: linear-gradient(135deg, #1e1e1e, #4CAF50);
+}
+
+.theme-option[data-theme="purple"] {
+    background: linear-gradient(135deg, #121212, #9C27B0);
+}
+
+.theme-option[data-theme="blue"] {
+    background: linear-gradient(135deg, #0d1b2a, #2196F3);
+}
+
+.theme-option[data-theme="orange"] {
+    background: linear-gradient(135deg, #311b92, #FF5722);
+}
+.theme-option[data-theme="pop"] {
+    background: linear-gradient(135deg, #e9352e, #1f1714);
+}
+
+.theme-option.selected {
+    border-color: white;
+    transform: scale(1.1);
+}
+
+.sound-toggle {
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 100;
+}
+
+.leaderboard-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.delete-btn {
+    background-color: #f44336 !important;
+    margin-left: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    width: auto;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f !important;
+}
+
+.leaderboard-item {
+    position: relative;
+    padding: 10px;
+    border-bottom: 1px solid #444;
+    transition: all 0.3s;
+    margin-bottom: 5px;
+}
+
+.leaderboard-item:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+#delete-section {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: rgba(255, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    display: none;
+}
+
+#delete-password {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 200px;
+    margin: 10px auto;
+    display: block;
+    background-color: #333;
+    color: white;
+}
+
+#confirm-delete-btn {
+    background-color: #f44336;
+    width: auto;
+}
+
+#confirm-delete-btn:hover {
+    background-color: #d32f2f;
+}
+
+#cancel-delete-btn {
+    background-color: #607d8b;
+    width: auto;
+}
+
+#cancel-delete-btn:hover {
+    background-color: #455a64;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
